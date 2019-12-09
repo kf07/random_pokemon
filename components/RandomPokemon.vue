@@ -8,21 +8,21 @@
         <button @click="getRandomPokemon">更新</button>
       </div>
       <client-only class="chart">
-        <Chart :pokemon-stats="random.stats"/>
+        <Chart :pokemon-stats="random.stats" />
       </client-only>
     </div>
   </div>
 </template>
 
 <script>
-import Chart from "./Chart";
-import {useRandomPokemon} from '../use/randomPokemon'
-import {onMounted, ref, watch, computed, reactive} from '@vue/composition-api'
+import { onMounted, ref, watch, computed, reactive } from '@vue/composition-api'
+import { useRandomPokemon } from '../use/randomPokemon'
+import Chart from './Chart'
 export default {
-  name: "RandomPokemon",
-  components: {Chart},
+  name: 'RandomPokemon',
+  components: { Chart },
   props: ['pokemonList'],
-  setup({pokemonList}) {
+  setup({ pokemonList }) {
     const random = ref({
       no: '',
       name: '',
@@ -55,6 +55,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

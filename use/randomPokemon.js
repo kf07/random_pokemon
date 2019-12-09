@@ -16,7 +16,8 @@ import { ref, onMounted } from '@vue/composition-api'
 
 export function useRandomPokemon(list) {
   const pokemonList = list
-  const randomPokemon = pokemonList[Math.floor(Math.random() * pokemonList.length)]
+  const randomPokemon =
+    pokemonList[Math.floor(Math.random() * pokemonList.length)]
 
   //
   // function update() {
