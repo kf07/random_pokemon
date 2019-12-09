@@ -3,7 +3,7 @@ import jsonData from '~/assets/json/pokemon_data.json'
 
 export const usePokemonJson = () => {
   const data = jsonData
-  const state =  reactive({
+  const state = reactive({
     pokemonList: data,
     pokemonListEvolution: computed(() => {
       return data.filter(item => {
@@ -13,3 +13,4 @@ export const usePokemonJson = () => {
   })
   return state
 }
+

@@ -14,10 +14,9 @@
 import { ref, onMounted } from '@vue/composition-api'
 // import { usePokemonJson } from '@/hooks/pokemon-jsonあ
 
-
 export function useRandomPokemon(list) {
-  const pokemonList = list;
-  const randomPokemon =  pokemonList[Math.floor(Math.random() * pokemonList.length)];
+  const pokemonList = list
+  const randomPokemon = pokemonList[Math.floor(Math.random() * pokemonList.length)]
 
   //
   // function update() {

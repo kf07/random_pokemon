@@ -1,58 +1,49 @@
 <template>
-  <section class='container'>
-    <div>
-      <div>
-        <p>{{ random.name }}</p>
-      </div>
-      <button @click='getRandomPokemon'>更新</button>
-    </div>
-    <Chart :pokemonStats="random.stats"/>
-  </section>
+  <div>
+    <section class="container">
+      <RandomPokemon :pokemonList="state.pokemonListEvolution"/>
+    </section>
+    <section class="container">
+      <SearchPokemon :pokemonList="state.pokemonListEvolution"/>
+    </section>
+  </div>
 </template>
 
 <script>
-  import axios from 'axios'
-  import {onMounted, ref, watch, computed} from '@vue/composition-api'
+  import {onMounted, ref, watch, computed, reactive} from '@vue/composition-api'
   import {usePokemonJson} from '../hooks/pokemon-json'
-  import {useRandomPokemon} from '../use/randomPokemon';
-  import Chart from "../components/Chart";
+  import RandomPokemon from "../components/RandomPokemon";
+  import SearchPokemon from "../components/SearchPokemon";
 
   export default {
-    components: {Chart},
+    components: { RandomPokemon, SearchPokemon},
     setup() {
       const state = usePokemonJson()
-      const random = ref({
-        'no': '',
-        'name': '',
-        'form': '',
-        'isMegaEvolution': '',
-        'evolutions': '',
-        'types': '',
-        'abilities': '',
-        'hiddenAbilities': '',
-        'stats': {'hp': '', 'attack': '', 'defence': '', 'spAttack': '', 'spDefence': '', 'speed': ''}
-      });
-      console.log(state)
-      onMounted(() => {
-        console.log(state.pokemonListEvolution)
-        getRandomPokemon()
-      })
-      const getRandomPokemon = () => {
-        random.value = useRandomPokemon(state.pokemonListEvolution)
-      }
       return {
-        state,
-        random,
-        getRandomPokemon
+        state
       }
     }
   }
 </script>
 
-<style>
+<style lang="scss">
+  .pokemon-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+
+    .name {
+      width: 200px;
+    }
+
+    .chart {
+      width: 50%;
+    }
+  }
+
   .container {
     margin: 0 auto;
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
